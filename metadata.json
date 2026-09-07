@@ -1,0 +1,7 @@
+{
+  "name": "FireAITool",
+  "description": "Next-generation AI video and short-form content creator for YouTube Shorts, Instagram Reels, and cinematic videos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

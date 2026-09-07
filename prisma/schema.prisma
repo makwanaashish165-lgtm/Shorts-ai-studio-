@@ -1,0 +1,249 @@
+// ShortsAI Studio — Prisma Schema
+// Production-ready database schema for AI Video Creator SaaS
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  CREATOR
+  ADMIN
+}
+
+enum PlanTier {
+  FREE
+  CREATOR
+  PRO
+  ENTERPRISE
+}
+
+enum JobStatus {
+  QUEUED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  AUDIO
+  VOICEOVER
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  name          String?
+  avatarUrl     String?
+  passwordHash  String?
+  role          Role            @default(USER)
+  credits       Int             @default(1250)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  subscription      Subscription?
+  projects          Project[]
+  media             Media[]
+  generations       Generation[]
+  voiceGenerations  VoiceGeneration[]
+  usages            Usage[]
+  apiConfiguration  ApiConfiguration?
+  sharedProjects    ProjectShare[]
+
+  @@map("users")
+}
+
+model Subscription {
+  id               String    @id @default(uuid())
+  userId           String    @unique
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tier             PlanTier  @default(FREE)
+  stripeCustomerId String?
+  stripePriceId    String?
+  status           String    @default("active")
+  currentPeriodEnd DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@map("subscriptions")
+}
+
+model Project {
+  id             String         @id @default(uuid())
+  userId         String
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title          String
+  description    String?
+  platform       String         @default("YouTube Shorts")
+  aspectRatio    String         @default("9:16")
+  duration       Int            @default(30)
+  style          String         @default("Cinematic")
+  language       String         @default("English")
+  voiceName      String         @default("Zephyr")
+  thumbnailUrl   String?
+  hook           String?
+  cta            String?
+  hashtags       String[]       @default([])
+  status         String         @default("draft")
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  // Relations
+  scenes         Scene[]
+  captions       Caption[]
+  generations    Generation[]
+  shares         ProjectShare[]
+
+  @@map("projects")
+}
+
+model Scene {
+  id              String       @id @default(uuid())
+  projectId       String
+  project         Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sceneNumber     Int
+  duration        Float        @default(5.0)
+  narration       String       @db.Text
+  visualPrompt    String       @db.Text
+  cameraDirection String       @default("Slow Zoom")
+  style           String       @default("Cinematic")
+  transition      String       @default("fade")
+  mediaUrl        String?
+  mediaType       String?      @default("image")
+  audioUrl        String?
+  captions        String[]     @default([])
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  @@map("scenes")
+}
+
+model Media {
+  id           String     @id @default(uuid())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  type         MediaType
+  url          String
+  thumbnailUrl String?
+  duration     Float?
+  size         Int        @default(0)
+  category     String     @default("Generated Assets")
+  createdAt    DateTime   @default(now())
+
+  @@map("media")
+}
+
+model Generation {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectId   String?
+  project     Project?   @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  type        String     // shorts, long_video, text_to_video, image_to_video, image, voice, render
+  status      JobStatus  @default(QUEUED)
+  progress    Int        @default(0)
+  currentStep String     @default("Queued")
+  steps       String[]   @default([])
+  error       String?
+  resultUrl   String?
+  metadata    Json?
+  createdAt   DateTime   @default(now())
+  completedAt DateTime?
+
+  @@map("generations")
+}
+
+model VoiceGeneration {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  text        String    @db.Text
+  voiceName   String
+  language    String
+  audioUrl    String
+  duration    Float
+  createdAt   DateTime  @default(now())
+
+  @@map("voice_generations")
+}
+
+model Caption {
+  id              String   @id @default(uuid())
+  projectId       String
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  preset          String   @default("Viral Shorts")
+  fontFamily      String   @default("Inter")
+  fontSize        Int      @default(28)
+  textColor       String   @default("#ffffff")
+  highlightColor  String   @default("#facc15")
+  strokeColor     String   @default("#000000")
+  strokeWidth     Int      @default(2)
+  hasShadow       Boolean  @default(true)
+  position        String   @default("bottom")
+  createdAt       DateTime @default(now())
+
+  @@map("captions")
+}
+
+model Template {
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  category     String
+  duration     Int
+  aspectRatio  String   @default("9:16")
+  thumbnailUrl String
+  scenesCount  Int      @default(5)
+  style        String   @default("Cinematic")
+  samplePrompt String   @db.Text
+  createdAt    DateTime @default(now())
+
+  @@map("templates")
+}
+
+model Usage {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type         String   // Text Generation, Image Generation, Video Generation, Voice Generation, Video Render
+  creditsUsed  Int
+  projectTitle String?
+  createdAt    DateTime @default(now())
+
+  @@map("usages")
+}
+
+model ApiConfiguration {
+  id                   String   @id @default(uuid())
+  userId               String   @unique
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  geminiApiKeyEnc      String?
+  videoProviderApiKey  String?
+  voiceProviderApiKey  String?
+  storageEndpoint      String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@map("api_configurations")
+}
+
+model ProjectShare {
+  id         String   @id @default(uuid())
+  projectId  String
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  permission String   @default("view") // view, edit
+  createdAt  DateTime @default(now())
+
+  @@map("project_shares")
+}
