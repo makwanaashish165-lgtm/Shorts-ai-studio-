@@ -1,4 +1,4 @@
-// Provider Abstraction Interfaces for ShortsAI Studio
+// Provider Abstraction Interfaces for FIRE AI TOOL
 
 export interface ScriptGenerationParams {
   topic: string;

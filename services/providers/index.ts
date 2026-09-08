@@ -104,7 +104,7 @@ export class GeminiImageProvider implements AIImageProvider {
         <circle cx="540" cy="960" r="300" fill="none" />
       </g>
       <rect x="100" y="1300" width="880" height="420" rx="24" fill="#000000" fill-opacity="0.65" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
-      <text x="140" y="1380" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" letter-spacing="2">SHORTSAI STUDIO • SCENE ASSET</text>
+      <text x="140" y="1380" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" letter-spacing="2">FIRE AI TOOL • SCENE ASSET</text>
       <text x="140" y="1460" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800">${escapeXml(params.style || 'Cinematic Style')}</text>
       <foreignObject x="140" y="1500" width="800" height="180">
         <div xmlns="http://www.w3.org/1999/xhtml" style="color: #e4e4e7; font-family: system-ui, sans-serif; font-size: 26px; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">

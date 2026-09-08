@@ -69,7 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
 
         <div className="hidden sm:flex items-center gap-2">
-          <span className="text-xs uppercase tracking-wider font-bold text-orange-400">fireaitool</span>
+          <span className="text-xs uppercase tracking-wider font-extrabold text-orange-400">FIRE AI TOOL</span>
           <span className="text-zinc-600">/</span>
           <span className="text-sm font-semibold text-zinc-200 capitalize">
             {displayTitle}
@@ -216,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => {
                   setShowProfileMenu(false);
-                  alert('You are securely logged into ShortsAI Studio.');
+                  alert('You are securely logged into FIRE AI TOOL.');
                 }}
                 className="w-full text-left px-3 py-2 rounded-xl text-xs text-rose-400 hover:bg-rose-500/10 transition-colors flex items-center gap-2"
               >

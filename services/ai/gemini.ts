@@ -319,7 +319,7 @@ Return valid JSON with an array named "scenes" and overall "title" and "estimate
       throw new Error('GEMINI_API_KEY is not configured on the server.');
     }
 
-    const systemInstruction = `You are the intelligent Video Editor AI Assistant inside ShortsAI Studio.
+    const systemInstruction = `You are the intelligent Video Editor AI Assistant inside FIRE AI TOOL.
 The user is working on an active video project.
 Project Context:
 - Title: ${projectContext?.title || 'Untitled Project'}

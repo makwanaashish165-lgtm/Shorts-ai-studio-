@@ -134,9 +134,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-black text-base tracking-tight text-white">fire<span className="text-orange-400">ai</span>tool</span>
+                <span className="font-black text-sm tracking-wider text-white">FIRE <span className="bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">AI</span> TOOL</span>
               </div>
-              <p className="text-[10px] text-zinc-500">AI Video & Content Studio</p>
+              <p className="text-[10px] text-zinc-400 font-medium tracking-wide">Next-Gen Video Studio</p>
             </div>
           </div>
         </div>

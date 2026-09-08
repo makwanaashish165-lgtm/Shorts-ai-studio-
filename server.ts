@@ -40,7 +40,7 @@ async function startServer() {
   app.get('/api/health', (req, res) => {
     res.json({
       status: 'ok',
-      service: 'ShortsAI Studio API',
+      service: 'FIRE AI TOOL API',
       timestamp: new Date().toISOString(),
       providers: {
         gemini: !!process.env.GEMINI_API_KEY,
@@ -1076,7 +1076,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`ShortsAI Studio server running on http://0.0.0.0:${PORT}`);
+    console.log(`FIRE AI TOOL server running on http://0.0.0.0:${PORT}`);
   });
 }
 

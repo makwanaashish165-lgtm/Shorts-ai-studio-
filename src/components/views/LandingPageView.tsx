@@ -86,7 +86,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({
 
   const faqs = [
     {
-      q: 'Can I monetize videos created with FireAITool on YouTube and TikTok?',
+      q: 'Can I monetize videos created with FIRE AI TOOL on YouTube and TikTok?',
       a: 'Yes, absolutely! On Creator and Pro plans, you receive 100% commercial ownership with royalty-free licensing for YouTube Partner Program, TikTok Creator Rewards, and brand sponsorships.',
     },
     {
@@ -241,7 +241,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              quote: 'ShortsAI cut our faceless channel production time from 4 hours per video down to 6 minutes. We grew to 280k subscribers in 90 days.',
+              quote: 'FIRE AI TOOL cut our faceless channel production time from 4 hours per video down to 6 minutes. We grew to 280k subscribers in 90 days.',
               author: 'Alex Vance',
               channel: '@DailyStoicMind (280k subs)',
               avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
@@ -317,7 +317,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({
           Ready to automate your video channel?
         </h2>
         <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto">
-          Join 45,000+ creators producing viral YouTube Shorts, Reels, and TikToks with FireAITool.
+          Join 45,000+ creators producing viral YouTube Shorts, Reels, and TikToks with FIRE AI TOOL.
         </p>
         <div className="pt-2">
           <button
@@ -333,7 +333,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({
       <footer className="pt-12 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
         <div className="flex items-center gap-2">
           <Flame className="w-4 h-4 text-orange-400" />
-          <span className="font-bold text-zinc-300">FireAITool</span>
+          <span className="font-black tracking-wider text-white">FIRE <span className="text-orange-400">AI</span> TOOL</span>
           <span>© 2026 Autonomous Generative Video SaaS.</span>
         </div>
         <div className="flex gap-4">

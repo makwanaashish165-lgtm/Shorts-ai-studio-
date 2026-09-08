@@ -64,7 +64,7 @@ export const RazorpayCheckoutModal: React.FC<RazorpayCheckoutModalProps> = ({
         key: orderData.keyId,
         amount: orderData.amountPaise,
         currency: orderData.currency || 'INR',
-        name: 'FireAITool Premium',
+        name: 'FIRE AI TOOL Premium',
         description: `${orderData.plan.name} Subscription`,
         order_id: orderData.orderId,
         handler: async (response: any) => {
@@ -96,7 +96,7 @@ export const RazorpayCheckoutModal: React.FC<RazorpayCheckoutModalProps> = ({
           }
         },
         prefill: {
-          name: 'FireAITool Creator',
+          name: 'FIRE AI TOOL Creator',
           email: 'creator@fireaitool.com',
           contact: '9999999999',
         },
@@ -204,7 +204,7 @@ export const RazorpayCheckoutModal: React.FC<RazorpayCheckoutModalProps> = ({
                 🎉 Payment Successful!
               </h2>
               <p className="text-xs text-zinc-400 mt-1">
-                Welcome to <strong className="text-orange-400">FireAITool Premium</strong>.
+                Welcome to <strong className="text-orange-400">FIRE AI TOOL Premium</strong>.
               </p>
             </div>
 
@@ -292,7 +292,7 @@ export const RazorpayCheckoutModal: React.FC<RazorpayCheckoutModalProps> = ({
                     </span>
                   )}
                 </h3>
-                <p className="text-xs text-zinc-400">Official Secure Gateway • FireAITool</p>
+                <p className="text-xs text-zinc-400">Official Secure Gateway • FIRE AI TOOL</p>
               </div>
             </div>
 

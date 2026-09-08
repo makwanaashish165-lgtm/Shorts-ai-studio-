@@ -118,8 +118,8 @@ export default function App() {
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-400 flex items-center justify-center text-white font-black text-sm shadow-md shadow-orange-500/25">
                 🔥
               </div>
-              <span className="font-extrabold text-base tracking-tight text-white">
-                fire<span className="text-orange-400">ai</span>tool
+              <span className="font-black text-base tracking-wider text-white">
+                FIRE <span className="bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">AI</span> TOOL
               </span>
             </div>
 

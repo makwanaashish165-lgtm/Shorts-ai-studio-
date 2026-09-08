@@ -220,7 +220,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     {project.title}
                   </h4>
                   <p className="text-xs text-zinc-400 mt-1 line-clamp-2 leading-relaxed">
-                    {project.description || 'Custom autonomous video generated with FireAITool.'}
+                    {project.description || 'Custom autonomous video generated with FIRE AI TOOL.'}
                   </p>
                 </div>
 
